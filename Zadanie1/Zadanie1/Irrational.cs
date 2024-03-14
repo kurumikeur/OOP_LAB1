@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Zadanie1
 {
-    class Irrational
+    public class Irrational
     {
         public int Numerator { get; private set; }
-        public int Denomirator { get; private set; }
+        public int Denominator { get; private set; }
         public string ToString()
         {
             string Str = Numerator.ToString();
-            if (Denomirator != 1)
-                Str += "/" + Denomirator.ToString();
+            if (Denominator != 1)
+                Str += "/" + Denominator.ToString();
             return Str;
         }
 
@@ -22,7 +22,7 @@ namespace Zadanie1
         {
             int a, b;
             a = Math.Abs(num.Numerator);
-            b = Math.Abs(num.Denomirator);
+            b = Math.Abs(num.Denominator);
             while (a > 0 && b > 0)
                 if (a < b)
                     b %= a;
@@ -30,27 +30,27 @@ namespace Zadanie1
                     a %= b;
             a += b;
             num.Numerator /= a;
-            num.Denomirator /= a;
-            if ((num.Denomirator < 0 && num.Numerator < 0) || (num.Denomirator < 0 && num.Numerator > 0))
+            num.Denominator /= a;
+            if ((num.Denominator < 0 && num.Numerator < 0) || (num.Denominator < 0 && num.Numerator > 0))
             {
-                num.Denomirator = -num.Denomirator;
+                num.Denominator = -num.Denominator;
                 num.Numerator = -num.Numerator;
             }
         }
         static public Irrational operator + (Irrational num1, Irrational num2)
         {
-            num1.Numerator *= num2.Denomirator;
-            num2.Numerator *= num1.Denomirator;
-            num1.Denomirator *= num2.Denomirator;
+            num1.Numerator *= num2.Denominator;
+            num2.Numerator *= num1.Denominator;
+            num1.Denominator *= num2.Denominator;
             num1.Numerator += num2.Numerator;
             ReduceFraction(ref num1);
             return num1;
         } 
         static public Irrational operator -(Irrational num1, Irrational num2)
         {
-            num1.Numerator *= num2.Denomirator;
-            num2.Numerator *= num1.Denomirator;
-            num1.Denomirator *= num2.Denomirator;
+            num1.Numerator *= num2.Denominator;
+            num2.Numerator *= num1.Denominator;
+            num1.Denominator *= num2.Denominator;
             num1.Numerator -= num2.Numerator;
             ReduceFraction(ref num1);
             return num1;
@@ -63,59 +63,59 @@ namespace Zadanie1
         static public Irrational operator *(Irrational num1, Irrational num2)
         {
             num1.Numerator *= num2.Numerator;
-            num1.Denomirator *= num2.Denomirator;
+            num1.Denominator *= num2.Denominator;
             ReduceFraction(ref num1);
             return num1;
         } 
         static public Irrational operator /(Irrational num1, Irrational num2)
         {
-            num1.Numerator *= num2.Denomirator;
-            num1.Denomirator *= num2.Numerator;
+            num1.Numerator *= num2.Denominator;
+            num1.Denominator *= num2.Numerator;
             ReduceFraction(ref num1);
             return num1;
         } 
 
         static public Boolean operator > (Irrational num1, Irrational num2)
         {
-            num1.Numerator *= num2.Denomirator;
-            num2.Numerator *= num1.Denomirator;
+            num1.Numerator *= num2.Denominator;
+            num2.Numerator *= num1.Denominator;
             if (num1.Numerator > num2.Numerator)
                 return true;
             return false;
         }
         static public Boolean operator < (Irrational num1, Irrational num2)
         {
-            num1.Numerator *= num2.Denomirator;
-            num2.Numerator *= num1.Denomirator;
+            num1.Numerator *= num2.Denominator;
+            num2.Numerator *= num1.Denominator;
             if (num1.Numerator < num2.Numerator)
                 return true;
             return false;
         }
         static public Boolean operator >= (Irrational num1, Irrational num2)
         {
-            num1.Numerator *= num2.Denomirator;
-            num2.Numerator *= num1.Denomirator;
+            num1.Numerator *= num2.Denominator;
+            num2.Numerator *= num1.Denominator;
             if (num1.Numerator >= num2.Numerator)
                 return true;
             return false;
         }
         static public Boolean operator <= (Irrational num1, Irrational num2)
         {
-            num1.Numerator *= num2.Denomirator;
-            num2.Numerator *= num1.Denomirator;
+            num1.Numerator *= num2.Denominator;
+            num2.Numerator *= num1.Denominator;
             if (num1.Numerator <= num2.Numerator)
                 return true;
             return false;
         }
         static public Boolean operator == (Irrational num1, Irrational num2)
         {
-            if (num2.Denomirator == num1.Denomirator && num2.Numerator == num1.Numerator)
+            if (num2.Denominator == num1.Denominator && num2.Numerator == num1.Numerator)
                 return true;
             return false;
         }
         static public Boolean operator != (Irrational num1, Irrational num2)
         {
-            if (num2.Denomirator != num1.Denomirator || num2.Numerator != num1.Numerator)
+            if (num2.Denominator != num1.Denominator || num2.Numerator != num1.Numerator)
                 return true;
             return false;
         }
@@ -135,11 +135,11 @@ namespace Zadanie1
                     a %= b;
             a += b;
             this.Numerator = Numerator / a;
-            this.Denomirator = Denomirator / a;
+            this.Denominator = Denomirator / a;
 
-            if ((this.Denomirator < 0 &&  this.Numerator < 0) || (this.Denomirator < 0 && this.Numerator > 0))
+            if ((this.Denominator < 0 &&  this.Numerator < 0) || (this.Denominator < 0 && this.Numerator > 0))
             {
-                this.Denomirator = -this.Denomirator;
+                this.Denominator = -this.Denominator;
                 this.Numerator = -this.Numerator;
             }
         }
