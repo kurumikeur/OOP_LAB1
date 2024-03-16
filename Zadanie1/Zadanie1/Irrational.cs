@@ -123,7 +123,7 @@ namespace Zadanie1
         public Irrational(int Numerator, int Denomirator)
         {
             if(Denomirator == 0)
-                throw new Exception("Знаменатель не может быть равен 0");
+                throw new ArgumentException("Знаменатель не может быть равен 0", nameof(Denominator));
 
             int a, b;
             a = Math.Abs(Numerator);

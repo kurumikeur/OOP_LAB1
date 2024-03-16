@@ -9,6 +9,14 @@ namespace TestProject1
         public void Setup()
         {
         }
+        [Test]
+        [TestCase(0, 0)]
+        [TestCase(6, 0)]
+        [TestCase(-6, 0)]
+        public void TestDenominator(int a, int b)
+        {
+            Assert.That(() => new Irrational(a, b), Throws.Exception);
+        }
 
         [Test]
         [TestCase(1, 3, "1/3")]

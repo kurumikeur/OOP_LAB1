@@ -21,8 +21,8 @@ tree3.SetChild(new Tree("Child3-2"));
 tree4.SetChild(new Tree("Child4-1"));
 
 tree1.SetChild(tree2);
+tree1.SetChild(tree3);
 tree2.SetChild(tree4);
-tree2.SetChild(tree3);
 
 tree1.GetInfo();
 
