@@ -24,7 +24,7 @@ tree1.SetChild(tree2);
 tree1.SetChild(tree3);
 tree2.SetChild(tree4);
 
-tree1.GetInfo();
+Console.WriteLine(string.Join("\n", tree1.GetList()));
 
 
 

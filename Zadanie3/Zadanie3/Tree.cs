@@ -22,11 +22,14 @@ namespace Zadanie3
 
         protected string GetID() { return ID.ToString(); }
 
-        public void GetInfo()
+        public List<Tree> GetList()
         {
-            Console.WriteLine("Parent: " + GetID());
+            List<Tree> buff = new();
+            //Console.WriteLine("Parent: " + GetID());
             foreach (Tree child in GetChildNodes(ChildNodes))
-                Console.WriteLine("Child: " + child.ID.ToString());
+                buff.Add(child);
+            return buff;
+               // Console.WriteLine("Child: " + child.ID.ToString());
         }
 
         protected IEnumerable<Tree> GetChildNodes(List<Tree> ChildNodes)

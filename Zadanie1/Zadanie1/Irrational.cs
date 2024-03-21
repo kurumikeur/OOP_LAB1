@@ -10,14 +10,6 @@ namespace Zadanie1
     {
         public int Numerator { get; private set; }
         public int Denominator { get; private set; }
-        public string ToString()
-        {
-            string Str = Numerator.ToString();
-            if (Denominator != 1)
-                Str += "/" + Denominator.ToString();
-            return Str;
-        }
-
         static public void ReduceFraction(ref Irrational num)
         {
             int a, b;
@@ -37,6 +29,15 @@ namespace Zadanie1
                 num.Numerator = -num.Numerator;
             }
         }
+
+        public override string ToString()
+        {
+            string Str = Numerator.ToString();
+            if (Denominator != 1)
+                Str += "/" + Denominator.ToString();
+            return Str;
+        }
+
         static public Irrational operator + (Irrational num1, Irrational num2)
         {
             num1.Numerator *= num2.Denominator;
