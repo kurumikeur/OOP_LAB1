@@ -18,6 +18,9 @@ namespace Zadanie3
             ID = ID1;
             ChildNodes = new List<Tree>();  
         }
+
+        public override string ToString() { return ID; }
+     
         public void SetChild(Tree child) { ChildNodes.Add(child); }
 
         protected string GetID() { return ID.ToString(); }
@@ -25,11 +28,10 @@ namespace Zadanie3
         public List<Tree> GetList()
         {
             List<Tree> buff = new();
-            //Console.WriteLine("Parent: " + GetID());
+            buff.Add(this);
             foreach (Tree child in GetChildNodes(ChildNodes))
                 buff.Add(child);
             return buff;
-               // Console.WriteLine("Child: " + child.ID.ToString());
         }
 
         protected IEnumerable<Tree> GetChildNodes(List<Tree> ChildNodes)
